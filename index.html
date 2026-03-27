@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Helm — You steer. Agents execute.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Helm — AI-native operating philosophy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #f0efe8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            letter-spacing: -0.3px;
+            font-size: 16px;
+        }
+
+        @media (prefers-color-scheme: light) {
+            body {
+                background-color: #ffffff;
+                color: #1a1a1a;
+            }
+        }
+
+        /* Layout */
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 96px 0;
+            border-bottom: 1px solid rgba(240, 239, 232, 0.1);
+        }
+
+        @media (prefers-color-scheme: light) {
+            section {
+                border-bottom-color: rgba(26, 26, 26, 0.1);
+            }
+        }
+
+        section:last-child {
+            border-bottom: none;
+            padding-bottom: 64px;
+        }
+
+        section:first-child {
+            padding-top: 128px;
+        }
+
+        @media (max-width: 640px) {
+            section {
+                padding: 64px 0;
+            }
+            section:first-child {
+                padding-top: 96px;
+            }
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 64px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -1.2px;
+        }
+
+        h2 {
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 32px;
+            letter-spacing: -0.8px;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            margin-bottom: 24px;
+            max-width: 600px;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        em {
+            font-style: italic;
+            color: rgba(240, 239, 232, 0.85);
+        }
+
+        @media (prefers-color-scheme: light) {
+            em {
+                color: rgba(26, 26, 26, 0.75);
+            }
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 48px;
+                margin-bottom: 12px;
+            }
+            h2 {
+                font-size: 32px;
+                margin-bottom: 24px;
+            }
+            h3 {
+                font-size: 20px;
+                margin-bottom: 16px;
+            }
+        }
+
+        /* Hero */
+        .hero-tagline {
+            font-size: 20px;
+            font-weight: 400;
+            color: rgba(240, 239, 232, 0.7);
+            margin-bottom: 0;
+        }
+
+        @media (prefers-color-scheme: light) {
+            .hero-tagline {
+                color: rgba(26, 26, 26, 0.6);
+            }
+        }
+
+        /* Pillars Grid */
+        .pillars {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 64px;
+            margin-top: 48px;
+        }
+
+        .pillar {
+            padding: 0;
+        }
+
+        .pillar-number {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(240, 239, 232, 0.5);
+            margin-bottom: 12px;
+        }
+
+        @media (prefers-color-scheme: light) {
+            .pillar-number {
+                color: rgba(26, 26, 26, 0.5);
+            }
+        }
+
+        .pillar h3 {
+            margin-bottom: 16px;
+        }
+
+        .pillar p {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* Laws Grid */
+        .laws-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .law {
+            padding-left: 0;
+        }
+
+        .law-id {
+            display: inline-block;
+            font-weight: 600;
+            color: rgba(240, 239, 232, 0.5);
+            margin-right: 12px;
+            min-width: 32px;
+        }
+
+        @media (prefers-color-scheme: light) {
+            .law-id {
+                color: rgba(26, 26, 26, 0.5);
+            }
+        }
+
+        .law p {
+            display: inline;
+            margin-bottom: 0;
+        }
+
+        /* Form */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 48px;
+        }
+
+        input[type="email"] {
+            padding: 14px 16px;
+            border: 1px solid rgba(240, 239, 232, 0.2);
+            background-color: rgba(240, 239, 232, 0.02);
+            color: #f0efe8;
+            font-family: inherit;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        @media (prefers-color-scheme: light) {
+            input[type="email"] {
+                border-color: rgba(26, 26, 26, 0.15);
+                background-color: rgba(26, 26, 26, 0.02);
+                color: #1a1a1a;
+            }
+        }
+
+        input[type="email"]::placeholder {
+            color: rgba(240, 239, 232, 0.4);
+        }
+
+        @media (prefers-color-scheme: light) {
+            input[type="email"]::placeholder {
+                color: rgba(26, 26, 26, 0.4);
+            }
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+            border-color: rgba(240, 239, 232, 0.4);
+            background-color: rgba(240, 239, 232, 0.05);
+        }
+
+        @media (prefers-color-scheme: light) {
+            input[type="email"]:focus {
+                border-color: rgba(26, 26, 26, 0.3);
+                background-color: rgba(26, 26, 26, 0.03);
+            }
+        }
+
+        button {
+            padding: 14px 24px;
+            border: 1px solid rgba(240, 239, 232, 0.3);
+            background-color: transparent;
+            color: #f0efe8;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        @media (prefers-color-scheme: light) {
+            button {
+                border-color: rgba(26, 26, 26, 0.2);
+                color: #1a1a1a;
+            }
+        }
+
+        button:hover {
+            border-color: rgba(240, 239, 232, 0.6);
+            background-color: rgba(240, 239, 232, 0.08);
+        }
+
+        @media (prefers-color-scheme: light) {
+            button:hover {
+                border-color: rgba(26, 26, 26, 0.4);
+                background-color: rgba(26, 26, 26, 0.04);
+            }
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 48px 0;
+            color: rgba(240, 239, 232, 0.5);
+            font-size: 14px;
+            border-top: 1px solid rgba(240, 239, 232, 0.1);
+        }
+
+        @media (prefers-color-scheme: light) {
+            footer {
+                color: rgba(26, 26, 26, 0.5);
+                border-top-color: rgba(26, 26, 26, 0.1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .pillars {
+                gap: 48px;
+            }
+
+            .laws-grid {
+                gap: 24px;
+            }
+        }
+
+        /* Subtle visual hierarchy for sections */
+        section:nth-child(odd) {
+            /* Alternate subtle background if needed, but keeping it minimal */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <section id="hero">
+            <h1>Helm</h1>
+            <p class="hero-tagline">You steer. Agents execute.</p>
+        </section>
+
+        <!-- The Problem -->
+        <section id="problem">
+            <h2>The Problem</h2>
+            <p>Your tools own you. Five dashboards. Slack for notifications, Gmail for tracking, Notion for status, Calendar for time, Notes for everything else. Every context switch costs 20 minutes. Every system learns you at a different depth.</p>
+            <p>You're not fragmented because you're disorganized. You're fragmented because nothing was built for a mind that works with AI.</p>
+        </section>
+
+        <!-- What Helm Is -->
+        <section id="what">
+            <h2>What Helm Is</h2>
+            <p>Helm isn't a tool. It's an operating philosophy for anyone going AI-native.</p>
+            <p>It's built on a simple insight: <strong>the moment you work with agents, your system architecture must change.</strong> Not your habits. Your architecture.</p>
+            <p>Helm gives you that architecture. A command center. A set of 12 laws. A weekly loop that closes every open gap. One place where humans decide and agents execute. Everything else quiets down.</p>
+        </section>
+
+        <!-- The 3 Pillars -->
+        <section id="pillars">
+            <h2>The 3 Pillars</h2>
+            <div class="pillars">
+                <div class="pillar">
+                    <span class="pillar-number">Pillar 1</span>
+                    <h3>The Command Center</h3>
+                    <p>One interface. Everything routed through it. Not a dashboard. A control surface. One place where you see everything that matters, make decisions, and hand off to agents.</p>
+                </div>
+                <div class="pillar">
+                    <span class="pillar-number">Pillar 2</span>
+                    <h3>Design for Who You Are</h3>
+                    <p>Not who you want to be. Your system must reflect your actual behavior, not your aspirations. That's how it works in the background instead of fighting you.</p>
+                </div>
+                <div class="pillar">
+                    <span class="pillar-number">Pillar 3</span>
+                    <h3>Finish What You Start</h3>
+                    <p>Every task follows the GyShiDo loop: assign, execute, confirm, learn. No open loops. No forgotten context. Relentless completion. Agents don't work on parallel threads. They work on what's in front of them.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The 12 Laws -->
+        <section id="laws">
+            <h2>The 12 Laws</h2>
+            <div class="laws-grid">
+                <div class="law">
+                    <span class="law-id">L1.</span>
+                    <p><strong>Self-Acceptance Architecture.</strong> Design for actual behavior, not desired behavior.</p>
+                </div>
+                <div class="law">
+                    <span class="law-id">L2.</span>
+                    <p><strong>GyShiDo.</strong> Relentless focus on completion over parallelism.</p>
+                </div>
+                <div class="law">
+                    <span class="law-id">L3.</span>
+                    <p><strong>Closed Loop Mandate.</strong> Every task cycles assign → execute → confirm → learn.</p>
+                </div>
+                <div class="law">
+                    <span class="law-id">L4.</span>
+                    <p><strong>Signal vs. Noise.</strong> Alert only on deviations from baseline.</p>
+                </div>
+                <div class="law">
+                    <span class="law-id">L5.</span>
+                    <p><strong>One Interface.</strong> If status takes more than 60 seconds to check, the system is broken.</p>
+                </div>
+                <div class="law">
+                    <span class="law-id">L6.</span>
+                    <p><strong>Sequential Triage.</strong> One item at a time with pre-drafted actions.</p>
+                </div>
+                <div class="law">
+                    <span class="law-id">L7.</span>
+                    <p><strong>Everything Is Draftable.</strong> AI generates. You approve.</p>
+                </div>
+                <div class="law">
+                    <span class="law-id">L8.</span>
+                    <p><strong>Integration Mesh.</strong> Data lives with you, not third-party services.</p>
+                </div>
+                <div class="law">
+                    <span class="law-id">L9.</span>
+                    <p><strong>Persistent Memory.</strong> No cold-start cost between sessions.</p>
+                </div>
+                <div class="law">
+                    <span class="law-id">L10.</span>
+                    <p><strong>Humans as Orchestrators.</strong> Set intent. Agents handle execution.</p>
+                </div>
+                <div class="law">
+                    <span class="law-id">L11.</span>
+                    <p><strong>Weekly Evolution.</strong> 30 minutes every Sunday. One improvement.</p>
+                </div>
+                <div class="law">
+                    <span class="law-id">L12.</span>
+                    <p><strong>Anti-Trap Rule.</strong> If maintaining your system takes more than 2 hours/week, something is broken.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="cta">
+            <h2>Get the Helm Starter Kit</h2>
+            <p>Free starter kit: operating manual, daily reflection template, weekly review framework.</p>
+            <form class="form-group" action="https://formspree.io/f/placeholder" method="POST">
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    required
+                    aria-label="Email address"
+                >
+                <button type="submit">Send Starter Kit</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>Helm. Built by Ed Gomberg. 2026.</p>
+    </footer>
+</body>
+</html>
