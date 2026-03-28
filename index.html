@@ -3,446 +3,563 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Helm — You steer. Agents execute.">
+    <meta name="description" content="Helm — 10 laws for operating in the agentic era. You steer. Agents execute.">
     <meta name="theme-color" content="#0a0a0a">
-    <title>Helm — AI-native operating philosophy</title>
+    <title>Helm</title>
     <style>
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --bg: #0a0a0a;
+            --text: #e8e6df;
+            --muted: rgba(232, 230, 223, 0.45);
+            --dim: rgba(232, 230, 223, 0.15);
+            --accent: rgba(232, 230, 223, 0.08);
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f9f7f2;
+                --text: #1a1a18;
+                --muted: rgba(26, 26, 24, 0.45);
+                --dim: rgba(26, 26, 24, 0.12);
+                --accent: rgba(26, 26, 24, 0.05);
+            }
+        }
+
         html {
             scroll-behavior: smooth;
+            background-color: var(--bg);
         }
 
         body {
-            background-color: #0a0a0a;
-            color: #f0efe8;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.7;
-            letter-spacing: -0.3px;
-            font-size: 16px;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.65;
+            letter-spacing: -0.2px;
+            -webkit-font-smoothing: antialiased;
         }
 
-        @media (prefers-color-scheme: light) {
-            body {
-                background-color: #ffffff;
-                color: #1a1a1a;
-            }
-        }
-
-        /* Layout */
-        .container {
-            max-width: 680px;
+        .wrap {
+            max-width: 640px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 28px;
         }
 
-        section {
-            padding: 96px 0;
-            border-bottom: 1px solid rgba(240, 239, 232, 0.1);
+        /* ── Hero ── */
+        .hero {
+            padding: 120px 0 80px;
+            border-bottom: 1px solid var(--dim);
         }
 
-        @media (prefers-color-scheme: light) {
-            section {
-                border-bottom-color: rgba(26, 26, 26, 0.1);
-            }
-        }
-
-        section:last-child {
-            border-bottom: none;
-            padding-bottom: 64px;
-        }
-
-        section:first-child {
-            padding-top: 128px;
-        }
-
-        @media (max-width: 640px) {
-            section {
-                padding: 64px 0;
-            }
-            section:first-child {
-                padding-top: 96px;
-            }
-        }
-
-        /* Typography */
-        h1 {
-            font-size: 64px;
+        .hero-name {
+            font-size: 13px;
             font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 16px;
-            letter-spacing: -1.2px;
-        }
-
-        h2 {
-            font-size: 40px;
-            font-weight: 600;
-            line-height: 1.3;
-            margin-bottom: 32px;
-            letter-spacing: -0.8px;
-        }
-
-        h3 {
-            font-size: 24px;
-            font-weight: 600;
-            line-height: 1.4;
-            margin-bottom: 24px;
-            letter-spacing: -0.5px;
-        }
-
-        p {
-            margin-bottom: 24px;
-            max-width: 600px;
-        }
-
-        p:last-child {
-            margin-bottom: 0;
-        }
-
-        em {
-            font-style: italic;
-            color: rgba(240, 239, 232, 0.85);
-        }
-
-        @media (prefers-color-scheme: light) {
-            em {
-                color: rgba(26, 26, 26, 0.75);
-            }
-        }
-
-        strong {
-            font-weight: 600;
-        }
-
-        @media (max-width: 640px) {
-            h1 {
-                font-size: 48px;
-                margin-bottom: 12px;
-            }
-            h2 {
-                font-size: 32px;
-                margin-bottom: 24px;
-            }
-            h3 {
-                font-size: 20px;
-                margin-bottom: 16px;
-            }
-        }
-
-        /* Hero */
-        .hero-tagline {
-            font-size: 20px;
-            font-weight: 400;
-            color: rgba(240, 239, 232, 0.7);
-            margin-bottom: 0;
-        }
-
-        @media (prefers-color-scheme: light) {
-            .hero-tagline {
-                color: rgba(26, 26, 26, 0.6);
-            }
-        }
-
-        /* Pillars Grid */
-        .pillars {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 64px;
-            margin-top: 48px;
-        }
-
-        .pillar {
-            padding: 0;
-        }
-
-        .pillar-number {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: rgba(240, 239, 232, 0.5);
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .hero-line {
+            font-size: clamp(40px, 8vw, 60px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            color: var(--muted);
+            max-width: 480px;
+            line-height: 1.55;
+        }
+
+        /* ── Intro ── */
+        .intro {
+            padding: 72px 0;
+            border-bottom: 1px solid var(--dim);
+        }
+
+        .intro p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            max-width: 580px;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── Laws ── */
+        .laws-section {
+            padding: 72px 0;
+        }
+
+        .laws-header {
+            margin-bottom: 56px;
+        }
+
+        .laws-label {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
             margin-bottom: 12px;
         }
 
-        @media (prefers-color-scheme: light) {
-            .pillar-number {
-                color: rgba(26, 26, 26, 0.5);
-            }
+        .laws-title {
+            font-size: clamp(28px, 5vw, 38px);
+            font-weight: 700;
+            letter-spacing: -0.8px;
+            line-height: 1.2;
         }
 
-        .pillar h3 {
+        /* ── Law card ── */
+        .law {
+            border-top: 1px solid var(--dim);
+        }
+
+        .law:last-of-type {
+            border-bottom: 1px solid var(--dim);
+        }
+
+        .law-toggle {
+            display: block;
+            width: 100%;
+            background: none;
+            border: none;
+            color: inherit;
+            font-family: inherit;
+            text-align: left;
+            padding: 28px 0;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+
+        .law-toggle:focus-visible {
+            outline: 2px solid var(--text);
+            outline-offset: 4px;
+            border-radius: 2px;
+        }
+
+        .law-meta {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 10px;
+        }
+
+        .law-num {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+            flex-shrink: 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .law-name {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+            line-height: 1.25;
+        }
+
+        .law-short {
+            font-size: 16px;
+            line-height: 1.65;
+            color: var(--muted);
+            max-width: 560px;
+        }
+
+        .law-expand-hint {
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--muted);
+            opacity: 0.6;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: opacity 0.2s;
+        }
+
+        .law-toggle:hover .law-expand-hint {
+            opacity: 1;
+        }
+
+        .expand-icon {
+            display: inline-block;
+            transition: transform 0.25s ease;
+            font-style: normal;
+        }
+
+        .law-full {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.35s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .law-full-inner {
+            padding-bottom: 28px;
+            font-size: 16px;
+            line-height: 1.75;
+            max-width: 560px;
+        }
+
+        /* open state */
+        .law.is-open .law-full {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        .law.is-open .expand-icon {
+            transform: rotate(45deg);
+        }
+
+        .law.is-open .law-expand-hint span:last-child {
+            display: none;
+        }
+
+        .law.is-open .law-expand-hint::after {
+            content: "collapse";
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            padding: 72px 0 80px;
+            border-top: 1px solid var(--dim);
+        }
+
+        .cta-label {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
             margin-bottom: 16px;
         }
 
-        .pillar p {
+        .cta-heading {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 700;
+            letter-spacing: -0.6px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cta-body {
             font-size: 16px;
-            line-height: 1.7;
+            color: var(--muted);
+            margin-bottom: 36px;
+            max-width: 480px;
+            line-height: 1.65;
         }
 
-        /* Laws Grid */
-        .laws-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-            margin-top: 48px;
-        }
-
-        .law {
-            padding-left: 0;
-        }
-
-        .law-id {
-            display: inline-block;
-            font-weight: 600;
-            color: rgba(240, 239, 232, 0.5);
-            margin-right: 12px;
-            min-width: 32px;
-        }
-
-        @media (prefers-color-scheme: light) {
-            .law-id {
-                color: rgba(26, 26, 26, 0.5);
-            }
-        }
-
-        .law p {
-            display: inline;
-            margin-bottom: 0;
-        }
-
-        /* Form */
-        .form-group {
+        .cta-form {
             display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 48px;
+            gap: 10px;
+            max-width: 440px;
         }
 
-        input[type="email"] {
-            padding: 14px 16px;
-            border: 1px solid rgba(240, 239, 232, 0.2);
-            background-color: rgba(240, 239, 232, 0.02);
-            color: #f0efe8;
+        @media (max-width: 480px) {
+            .cta-form {
+                flex-direction: column;
+            }
+        }
+
+        .cta-form input[type="email"] {
+            flex: 1;
+            padding: 13px 16px;
             font-family: inherit;
-            font-size: 16px;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-
-        @media (prefers-color-scheme: light) {
-            input[type="email"] {
-                border-color: rgba(26, 26, 26, 0.15);
-                background-color: rgba(26, 26, 26, 0.02);
-                color: #1a1a1a;
-            }
-        }
-
-        input[type="email"]::placeholder {
-            color: rgba(240, 239, 232, 0.4);
-        }
-
-        @media (prefers-color-scheme: light) {
-            input[type="email"]::placeholder {
-                color: rgba(26, 26, 26, 0.4);
-            }
-        }
-
-        input[type="email"]:focus {
+            font-size: 15px;
+            background: var(--accent);
+            border: 1px solid var(--dim);
+            color: var(--text);
+            border-radius: 6px;
             outline: none;
-            border-color: rgba(240, 239, 232, 0.4);
-            background-color: rgba(240, 239, 232, 0.05);
+            transition: border-color 0.2s;
+            -webkit-appearance: none;
         }
 
-        @media (prefers-color-scheme: light) {
-            input[type="email"]:focus {
-                border-color: rgba(26, 26, 26, 0.3);
-                background-color: rgba(26, 26, 26, 0.03);
-            }
+        .cta-form input[type="email"]::placeholder {
+            color: var(--muted);
         }
 
-        button {
-            padding: 14px 24px;
-            border: 1px solid rgba(240, 239, 232, 0.3);
-            background-color: transparent;
-            color: #f0efe8;
+        .cta-form input[type="email"]:focus {
+            border-color: var(--muted);
+        }
+
+        .cta-form button {
+            padding: 13px 22px;
             font-family: inherit;
-            font-size: 16px;
-            font-weight: 500;
-            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            background: var(--text);
+            color: var(--bg);
+            border: none;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            white-space: nowrap;
+            transition: opacity 0.2s;
+            -webkit-appearance: none;
         }
 
-        @media (prefers-color-scheme: light) {
-            button {
-                border-color: rgba(26, 26, 26, 0.2);
-                color: #1a1a1a;
-            }
+        .cta-form button:hover {
+            opacity: 0.85;
         }
 
-        button:hover {
-            border-color: rgba(240, 239, 232, 0.6);
-            background-color: rgba(240, 239, 232, 0.08);
-        }
-
-        @media (prefers-color-scheme: light) {
-            button:hover {
-                border-color: rgba(26, 26, 26, 0.4);
-                background-color: rgba(26, 26, 26, 0.04);
-            }
-        }
-
-        button:active {
+        .cta-form button:active {
             transform: scale(0.98);
         }
 
-        /* Footer */
+        /* ── Footer ── */
         footer {
-            text-align: center;
-            padding: 48px 0;
-            color: rgba(240, 239, 232, 0.5);
-            font-size: 14px;
-            border-top: 1px solid rgba(240, 239, 232, 0.1);
+            padding: 32px 0 48px;
+            font-size: 13px;
+            color: var(--muted);
+            border-top: 1px solid var(--dim);
         }
 
-        @media (prefers-color-scheme: light) {
-            footer {
-                color: rgba(26, 26, 26, 0.5);
-                border-top-color: rgba(26, 26, 26, 0.1);
-            }
-        }
-
-        /* Responsive */
+        /* ── Mobile ── */
         @media (max-width: 640px) {
-            .container {
+            .hero {
+                padding: 80px 0 60px;
+            }
+
+            .intro, .laws-section, .cta-section {
+                padding: 56px 0;
+            }
+
+            .laws-header {
+                margin-bottom: 40px;
+            }
+
+            .law-toggle {
+                padding: 24px 0;
+            }
+
+            .wrap {
                 padding: 0 20px;
             }
-
-            .pillars {
-                gap: 48px;
-            }
-
-            .laws-grid {
-                gap: 24px;
-            }
-        }
-
-        /* Subtle visual hierarchy for sections */
-        section:nth-child(odd) {
-            /* Alternate subtle background if needed, but keeping it minimal */
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="wrap">
+
         <!-- Hero -->
-        <section id="hero">
-            <h1>Helm</h1>
-            <p class="hero-tagline">You steer. Agents execute.</p>
+        <header class="hero">
+            <p class="hero-name">Helm</p>
+            <h1 class="hero-line">You steer.<br>Agents execute.</h1>
+            <p class="hero-sub">An operating philosophy for the agentic era. Not a tool. A set of rules.</p>
+        </header>
+
+        <!-- Intro -->
+        <section class="intro">
+            <p>Every productivity framework ever written assumes you're the one doing the work. GTD. Time blocking. The Pomodoro Technique. All of them. The human executes.</p>
+            <p>That assumption is obsolete. When agents handle execution, your job changes. You don't need new habits. You need new architecture.</p>
+            <p>Helm is that architecture. Ten laws. One principle running through all of them: the human sets direction, the system handles motion.</p>
         </section>
 
-        <!-- The Problem -->
-        <section id="problem">
-            <h2>The Problem</h2>
-            <p>Your tools own you. Five dashboards. Slack for notifications, Gmail for tracking, Notion for status, Calendar for time, Notes for everything else. Every context switch costs 20 minutes. Every system learns you at a different depth.</p>
-            <p>You're not fragmented because you're disorganized. You're fragmented because nothing was built for a mind that works with AI.</p>
-        </section>
+        <!-- Laws -->
+        <section class="laws-section">
+            <div class="laws-header">
+                <p class="laws-label">The Laws</p>
+                <h2 class="laws-title">10 laws for operating<br>in the agentic era.</h2>
+            </div>
 
-        <!-- What Helm Is -->
-        <section id="what">
-            <h2>What Helm Is</h2>
-            <p>Helm isn't a tool. It's an operating philosophy for anyone going AI-native.</p>
-            <p>It's built on a simple insight: <strong>the moment you work with agents, your system architecture must change.</strong> Not your habits. Your architecture.</p>
-            <p>Helm gives you that architecture. A command center. A set of 12 laws. A weekly loop that closes every open gap. One place where humans decide and agents execute. Everything else quiets down.</p>
-        </section>
-
-        <!-- The 3 Pillars -->
-        <section id="pillars">
-            <h2>The 3 Pillars</h2>
-            <div class="pillars">
-                <div class="pillar">
-                    <span class="pillar-number">Pillar 1</span>
-                    <h3>The Command Center</h3>
-                    <p>One interface. Everything routed through it. Not a dashboard. A control surface. One place where you see everything that matters, make decisions, and hand off to agents.</p>
-                </div>
-                <div class="pillar">
-                    <span class="pillar-number">Pillar 2</span>
-                    <h3>Design for Who You Are</h3>
-                    <p>Not who you want to be. Your system must reflect your actual behavior, not your aspirations. That's how it works in the background instead of fighting you.</p>
-                </div>
-                <div class="pillar">
-                    <span class="pillar-number">Pillar 3</span>
-                    <h3>Finish What You Start</h3>
-                    <p>Every task follows the GyShiDo loop: assign, execute, confirm, learn. No open loops. No forgotten context. Relentless completion. Agents don't work on parallel threads. They work on what's in front of them.</p>
+            <!-- Law 01 -->
+            <div class="law">
+                <button class="law-toggle" aria-expanded="false">
+                    <div class="law-meta">
+                        <span class="law-num">01</span>
+                        <span class="law-name">Fit First</span>
+                    </div>
+                    <p class="law-short">A chair designed for perfect posture that nobody sits in is just furniture. A system you abandon after three days isn't a system. Design for how you actually behave, not how you plan to.</p>
+                    <span class="law-expand-hint"><i class="expand-icon">+</i> <span>read more</span></span>
+                </button>
+                <div class="law-full" role="region">
+                    <div class="law-full-inner">
+                        Most systems have a hidden assumption baked into the design: that you'll change your behavior to fit them. GTD assumes you'll process every inbox item. Gym plans assume you'll show up every morning. The assumption is almost always wrong. The system that works is the one designed around your actual constraints — your real attention span, your real schedule, your real energy patterns. Self-acceptance isn't a mindset shift. It's an engineering discipline.
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- The 12 Laws -->
-        <section id="laws">
-            <h2>The 12 Laws</h2>
-            <div class="laws-grid">
-                <div class="law">
-                    <span class="law-id">L1.</span>
-                    <p><strong>Self-Acceptance Architecture.</strong> Design for actual behavior, not desired behavior.</p>
-                </div>
-                <div class="law">
-                    <span class="law-id">L2.</span>
-                    <p><strong>GyShiDo.</strong> Relentless focus on completion over parallelism.</p>
-                </div>
-                <div class="law">
-                    <span class="law-id">L3.</span>
-                    <p><strong>Closed Loop Mandate.</strong> Every task cycles assign → execute → confirm → learn.</p>
-                </div>
-                <div class="law">
-                    <span class="law-id">L4.</span>
-                    <p><strong>Signal vs. Noise.</strong> Alert only on deviations from baseline.</p>
-                </div>
-                <div class="law">
-                    <span class="law-id">L5.</span>
-                    <p><strong>One Interface.</strong> If status takes more than 60 seconds to check, the system is broken.</p>
-                </div>
-                <div class="law">
-                    <span class="law-id">L6.</span>
-                    <p><strong>Sequential Triage.</strong> One item at a time with pre-drafted actions.</p>
-                </div>
-                <div class="law">
-                    <span class="law-id">L7.</span>
-                    <p><strong>Everything Is Draftable.</strong> AI generates. You approve.</p>
-                </div>
-                <div class="law">
-                    <span class="law-id">L8.</span>
-                    <p><strong>Integration Mesh.</strong> Data lives with you, not third-party services.</p>
-                </div>
-                <div class="law">
-                    <span class="law-id">L9.</span>
-                    <p><strong>Persistent Memory.</strong> No cold-start cost between sessions.</p>
-                </div>
-                <div class="law">
-                    <span class="law-id">L10.</span>
-                    <p><strong>Humans as Orchestrators.</strong> Set intent. Agents handle execution.</p>
-                </div>
-                <div class="law">
-                    <span class="law-id">L11.</span>
-                    <p><strong>Weekly Evolution.</strong> 30 minutes every Sunday. One improvement.</p>
-                </div>
-                <div class="law">
-                    <span class="law-id">L12.</span>
-                    <p><strong>Anti-Trap Rule.</strong> If maintaining your system takes more than 2 hours/week, something is broken.</p>
+            <!-- Law 02 -->
+            <div class="law">
+                <button class="law-toggle" aria-expanded="false">
+                    <div class="law-meta">
+                        <span class="law-num">02</span>
+                        <span class="law-name">One at a Time</span>
+                    </div>
+                    <p class="law-short">Parallelism feels like productivity. A surgeon doesn't start two operations simultaneously. Neither should you. Finish what's open before you open something new.</p>
+                    <span class="law-expand-hint"><i class="expand-icon">+</i> <span>read more</span></span>
+                </button>
+                <div class="law-full" role="region">
+                    <div class="law-full-inner">
+                        Most people optimize for starting. Starting feels like progress. But a half-built house isn't shelter. In complex knowledge work, every incomplete task carries a hidden tax — the mental overhead of knowing it's unfinished, the context you have to reload when you return, the compounding cost of interruption. The most productive systems aren't the ones that start the most things. They're the ones that finish them.
+                    </div>
                 </div>
             </div>
+
+            <!-- Law 03 -->
+            <div class="law">
+                <button class="law-toggle" aria-expanded="false">
+                    <div class="law-meta">
+                        <span class="law-num">03</span>
+                        <span class="law-name">Close the Loop</span>
+                    </div>
+                    <p class="law-short">A task you delegated but never confirmed is not a completed task. It's a liability with a friendly name.</p>
+                    <span class="law-expand-hint"><i class="expand-icon">+</i> <span>read more</span></span>
+                </button>
+                <div class="law-full" role="region">
+                    <div class="law-full-inner">
+                        Most delegation fails at step three. Step one: assign the task. Step two: the person executes. Step three: confirm it's done. Almost everyone skips step three. They assume "no news is good news." But silence is not confirmation. Closed loops require active closure — a reply, a status update, a check-in. Without it, you don't have a delegation system. You have a wishful thinking system.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Law 04 -->
+            <div class="law">
+                <button class="law-toggle" aria-expanded="false">
+                    <div class="law-meta">
+                        <span class="law-num">04</span>
+                        <span class="law-name">Signal vs. Noise</span>
+                    </div>
+                    <p class="law-short">A pilot doesn't monitor every gauge equally. Some readings are background. One reading is everything. The system that alerts you to everything teaches you to ignore everything. A smoke alarm that fires when you make toast doesn't save lives.</p>
+                    <span class="law-expand-hint"><i class="expand-icon">+</i> <span>read more</span></span>
+                </button>
+                <div class="law-full" role="region">
+                    <div class="law-full-inner">
+                        A sonar operator doesn't listen to the entire ocean. They train their ear for the specific pattern that means submarine. Everything else is water. The same principle applies to information systems. Most alerts are expected. Some represent drift — a trend worth watching. A few are genuine exceptions requiring immediate action. A system that can't tell the difference between these three categories isn't a signal system. It's a noise machine with an API.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Law 05 -->
+            <div class="law">
+                <button class="law-toggle" aria-expanded="false">
+                    <div class="law-meta">
+                        <span class="law-num">05</span>
+                        <span class="law-name">The Command Center</span>
+                    </div>
+                    <p class="law-short">You built the tools to serve you. At some point, you started serving them. Mission Control doesn't have one screen per astronaut. Everything routes through one place or it doesn't route at all.</p>
+                    <span class="law-expand-hint"><i class="expand-icon">+</i> <span>read more</span></span>
+                </button>
+                <div class="law-full" role="region">
+                    <div class="law-full-inner">
+                        Mission Control doesn't have a separate screen per astronaut, a different terminal per spacecraft system, and a third interface for weather. Everything feeds into one room. The people in that room can see the whole picture without switching tabs. That's not a luxury. That's the only way they can do their job. If checking status requires logging into five different dashboards, you don't have a system. You have five systems pretending to cooperate.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Law 06 -->
+            <div class="law">
+                <button class="law-toggle" aria-expanded="false">
+                    <div class="law-meta">
+                        <span class="law-num">06</span>
+                        <span class="law-name">Approve, Don't Compose</span>
+                    </div>
+                    <p class="law-short">Composing from scratch is the most expensive thing you can do with your brain. A film director doesn't hold the camera. They say cut.</p>
+                    <span class="law-expand-hint"><i class="expand-icon">+</i> <span>read more</span></span>
+                </button>
+                <div class="law-full" role="region">
+                    <div class="law-full-inner">
+                        A film director doesn't hold the camera, mix the audio, and design the costumes. They work with a team that produces drafts. The director's job is to say: "Yes, that's it" or "No, do it again." That discernment — fast, experienced, authoritative — is the skill that's actually hard to replace. In an agentic workflow, your job is the same. Claude generates. You approve, reject, or edit. The moment you start composing from scratch, you've stepped out of your role and into an assistant's.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Law 07 -->
+            <div class="law">
+                <button class="law-toggle" aria-expanded="false">
+                    <div class="law-meta">
+                        <span class="law-num">07</span>
+                        <span class="law-name">Own Your Data</span>
+                    </div>
+                    <p class="law-short">Your operational data lives in twelve different services. Each service owns a piece of your picture. None of them are obligated to show you the whole thing. Data you don't control is a subscription you didn't sign up for.</p>
+                    <span class="law-expand-hint"><i class="expand-icon">+</i> <span>read more</span></span>
+                </button>
+                <div class="law-full" role="region">
+                    <div class="law-full-inner">
+                        Think of it like a house. If you rent, the landlord can raise the price, change the rules, or sell the building. If you own, you decide what happens to the walls. Every piece of your operational data — transactions, bookings, communications, tasks — has a home right now. The question is whether you own that home or you're a tenant. Tenants get evicted. Owners get options.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Law 08 -->
+            <div class="law">
+                <button class="law-toggle" aria-expanded="false">
+                    <div class="law-meta">
+                        <span class="law-num">08</span>
+                        <span class="law-name">No Amnesia</span>
+                    </div>
+                    <p class="law-short">A chess player who forgets the board position after every move can't win. Neither can your system. You wouldn't hire an assistant who forgets every conversation. Don't accept it from your AI.</p>
+                    <span class="law-expand-hint"><i class="expand-icon">+</i> <span>read more</span></span>
+                </button>
+                <div class="law-full" role="region">
+                    <div class="law-full-inner">
+                        The human brain has working memory — the small scratchpad of immediately relevant information. And underneath it, long-term memory — years of accumulated context that shapes every decision. AI systems, by default, only have the scratchpad. Persistent memory gives them the long-term layer. That's the difference between a session and a relationship.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Law 09 -->
+            <div class="law">
+                <button class="law-toggle" aria-expanded="false">
+                    <div class="law-meta">
+                        <span class="law-num">09</span>
+                        <span class="law-name">Invisible Hand</span>
+                    </div>
+                    <p class="law-short">The best managers don't do the work. They make sure the right work gets done. If you're still writing every output yourself, you're not operating the system. You're being operated by it. Every general wins or loses at the planning table, not on the battlefield. The soldiers execute. The general decides what's worth fighting for.</p>
+                    <span class="law-expand-hint"><i class="expand-icon">+</i> <span>read more</span></span>
+                </button>
+                <div class="law-full" role="region">
+                    <div class="law-full-inner">
+                        A chess player doesn't move pieces manually one by one according to instinct. They formulate a strategy and execute according to it. What changes in an agentic world is that the pieces can now suggest their own moves. Your job shifts: less execution, more adjudication. Less typing, more approving drafts that are already 90% right. The leverage isn't in doing more. It's in reviewing faster.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Law 10 -->
+            <div class="law">
+                <button class="law-toggle" aria-expanded="false">
+                    <div class="law-meta">
+                        <span class="law-num">10</span>
+                        <span class="law-name">Sunday Ritual</span>
+                    </div>
+                    <p class="law-short">A ship 1 degree off course arrives at the wrong continent. A system 1 degree better each week is unrecognizable in a year. One adjustment. One Sunday. That's the whole protocol. Muscles don't grow during the workout. They grow in the recovery. The Sunday review isn't maintenance. It's where the system actually gets better.</p>
+                    <span class="law-expand-hint"><i class="expand-icon">+</i> <span>read more</span></span>
+                </button>
+                <div class="law-full" role="region">
+                    <div class="law-full-inner">
+                        The mistake most people make with systems is trying to fix everything at once. A full rebuild every quarter means you spend three months with a broken system, then blow it up before it can prove itself. One adjustment per week is different. It's small enough to be reversible. Frequent enough to compound. The Sunday review is 30 minutes: what worked, what didn't, what one thing changes. Not ten things. One.
+                        <br><br>
+                        The compounding effect of 1% weekly improvement over a year is not 52%. It's 168%. That's not motivational math. That's what actually happens when you don't skip weeks.
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <!-- CTA -->
-        <section id="cta">
-            <h2>Get the Helm Starter Kit</h2>
-            <p>Free starter kit: operating manual, daily reflection template, weekly review framework.</p>
-            <form class="form-group" action="https://formspree.io/f/placeholder" method="POST">
+        <section class="cta-section">
+            <p class="cta-label">Get Started</p>
+            <h2 class="cta-heading">The Helm Starter Kit</h2>
+            <p class="cta-body">Free. Includes the 10 laws as a formatted PDF, a starter CLAUDE.md template, and a Day 1 guide for setting up your own command center.</p>
+            <form class="cta-form" action="https://formspree.io/f/placeholder" method="POST">
                 <input
                     type="email"
                     name="email"
@@ -450,13 +567,37 @@
                     required
                     aria-label="Email address"
                 >
-                <button type="submit">Send Starter Kit</button>
+                <button type="submit">Get the Kit</button>
             </form>
         </section>
+
     </div>
 
     <footer>
-        <p>Helm. Built by Ed Gomberg. 2026.</p>
+        <div class="wrap">
+            Helm. Built by <a href="https://edgomberg.com" style="color: inherit;">Ed Gomberg</a>. 2026.
+        </div>
     </footer>
+
+    <script>
+        document.querySelectorAll('.law-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var law = this.closest('.law');
+                var isOpen = law.classList.contains('is-open');
+
+                // Close all
+                document.querySelectorAll('.law.is-open').forEach(function(el) {
+                    el.classList.remove('is-open');
+                    el.querySelector('.law-toggle').setAttribute('aria-expanded', 'false');
+                });
+
+                // Open clicked if it was closed
+                if (!isOpen) {
+                    law.classList.add('is-open');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
