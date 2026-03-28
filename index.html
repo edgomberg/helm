@@ -6,6 +6,9 @@
     <meta name="description" content="Helm — 10 laws for operating in the agentic era. You steer. Agents execute.">
     <meta name="theme-color" content="#0a0a0a">
     <title>Helm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -19,6 +22,8 @@
             --muted: rgba(232, 230, 223, 0.45);
             --dim: rgba(232, 230, 223, 0.15);
             --accent: rgba(232, 230, 223, 0.08);
+            --amber: #C4932A;
+            --display: 'Fraunces', Georgia, serif;
         }
 
         @media (prefers-color-scheme: light) {
@@ -28,6 +33,7 @@
                 --muted: rgba(26, 26, 24, 0.45);
                 --dim: rgba(26, 26, 24, 0.12);
                 --accent: rgba(26, 26, 24, 0.05);
+                --amber: #A87620;
             }
         }
 
@@ -68,11 +74,13 @@
         }
 
         .hero-line {
+            font-family: var(--display);
             font-size: clamp(40px, 8vw, 60px);
             font-weight: 700;
             line-height: 1.1;
             letter-spacing: -1.5px;
             margin-bottom: 20px;
+            font-optical-sizing: auto;
         }
 
         .hero-sub {
@@ -163,16 +171,18 @@
             font-size: 13px;
             font-weight: 600;
             letter-spacing: 1.5px;
-            color: var(--muted);
+            color: var(--amber);
             flex-shrink: 0;
             font-variant-numeric: tabular-nums;
         }
 
         .law-name {
+            font-family: var(--display);
             font-size: 20px;
             font-weight: 700;
             letter-spacing: -0.4px;
             line-height: 1.25;
+            font-optical-sizing: auto;
         }
 
         .law-short {
@@ -306,8 +316,8 @@
             font-family: inherit;
             font-size: 15px;
             font-weight: 600;
-            background: var(--text);
-            color: var(--bg);
+            background: var(--amber);
+            color: #0a0a0a;
             border: none;
             border-radius: 6px;
             cursor: pointer;
