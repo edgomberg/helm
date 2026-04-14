@@ -237,9 +237,34 @@
             max-width: 560px;
         }
 
+        /* ── In Practice block ── */
+        .law-example {
+            margin-top: 20px;
+            padding: 14px 16px;
+            border-left: 2px solid var(--amber);
+            background: var(--accent);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .law-example-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--amber);
+            margin-bottom: 8px;
+        }
+
+        .law-example p {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--text);
+            margin: 0;
+        }
+
         /* open state */
         .law.is-open .law-full {
-            max-height: 400px;
+            max-height: 700px;
             opacity: 1;
         }
 
@@ -412,6 +437,10 @@
                 <div class="law-full" role="region">
                     <div class="law-full-inner">
                         Most systems have a hidden assumption baked into the design: that you'll change your behavior to fit them. GTD assumes you'll process every inbox item. Gym plans assume you'll show up every morning. The assumption is almost always wrong. The system that works is the one designed around your actual constraints — your real attention span, your real schedule, your real energy patterns. Self-acceptance isn't a mindset shift. It's an engineering discipline.
+                        <div class="law-example">
+                            <p class="law-example-label">In practice</p>
+                            <p>Most people write their CLAUDE.md for the focused, rested version of themselves. By day 4 they're skipping the morning briefing because it assumes 30 minutes they don't have. Build it for the version of you that's jet-lagged and behind. The agent adapts to you, not the other way around.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -429,6 +458,10 @@
                 <div class="law-full" role="region">
                     <div class="law-full-inner">
                         Most people optimize for starting. Starting feels like progress. But a half-built house isn't shelter. In complex knowledge work, every incomplete task carries a hidden tax — the mental overhead of knowing it's unfinished, the context you have to reload when you return, the compounding cost of interruption. The most productive systems aren't the ones that start the most things. They're the ones that finish them.
+                        <div class="law-example">
+                            <p class="law-example-label">In practice</p>
+                            <p>Ten Claude tabs feel like 10x output. They're actually 10 half-finished things bleeding context into each other. Each open session costs attention even when you're not looking at it. One session. One deliverable. Close it before you open the next one.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -452,6 +485,10 @@
                         This isn't about trust. It's about information. When you don't follow up, you're not giving freedom. You're removing the feedback wire. If they misunderstood, silence doesn't help them catch it. You're not trusting them. You're disconnecting the circuit.
                         <br><br>
                         The fix comes from Amazon: define success before you delegate. "Done looks like X by Y date." Then the check-in becomes mechanical, not personal. Awkwardness disappears. The intervention is clinical. The minimum dose is one message per delegation: "Did X happen?" That's the full thing. One message closes the loop.
+                        <div class="law-example">
+                            <p class="law-example-label">In practice</p>
+                            <p>You tell Claude: "Send the updated report to Sarah." Claude says it drafted the email. You move on. Three days later Sarah hasn't responded — the draft was never sent. The loop was open the whole time. A closed loop means Claude surfaces a receipt. You read it. Only then is it done.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -469,6 +506,10 @@
                 <div class="law-full" role="region">
                     <div class="law-full-inner">
                         A sonar operator doesn't listen to the entire ocean. They train their ear for the specific pattern that means submarine. Everything else is water. The same principle applies to information systems. Most alerts are expected. Some represent drift — a trend worth watching. A few are genuine exceptions requiring immediate action. A system that can't tell the difference between these three categories isn't a signal system. It's a noise machine with an API.
+                        <div class="law-example">
+                            <p class="law-example-label">In practice</p>
+                            <p>You configure a Claude hook to notify you after every tool call. After a week you've trained yourself to ignore all of it. Now the one alert that mattered — an unexpected file modified — scrolled past unread. One hook per priority tier. Everything else is background. The goal isn't to see more. It's to never miss the one thing that counts.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -486,6 +527,10 @@
                 <div class="law-full" role="region">
                     <div class="law-full-inner">
                         Mission Control doesn't have a separate screen per astronaut, a different terminal per spacecraft system, and a third interface for weather. Everything feeds into one room. The people in that room can see the whole picture without switching tabs. That's not a luxury. That's the only way they can do their job. If checking status requires logging into five different dashboards, you don't have a system. You have five systems pretending to cooperate.
+                        <div class="law-example">
+                            <p class="law-example-label">In practice</p>
+                            <p>Five Claude sessions — one for email, one for CRM, one for finances, one for ops, one for personal tasks — means you're the integration layer. That's the job you were trying to eliminate. A single Claude interface with a shared CLAUDE.md and a morning briefing that pulls every context is the command center. Five tabs is just noise with a chat window.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -503,6 +548,10 @@
                 <div class="law-full" role="region">
                     <div class="law-full-inner">
                         A film director doesn't hold the camera, mix the audio, and design the costumes. They work with a team that produces drafts. The director's job is to say: "Yes, that's it" or "No, do it again." That discernment — fast, experienced, authoritative — is the skill that's actually hard to replace. In an agentic workflow, your job is the same. Claude generates. You approve, reject, or edit. The moment you start composing from scratch, you've stepped out of your role and into an assistant's.
+                        <div class="law-example">
+                            <p class="law-example-label">In practice</p>
+                            <p>Claude drafts an email. You spend 15 minutes rewriting it from scratch because it doesn't sound right. That's you composing, not approving — you just did the assistant's job. The right move: read it, say "shorter, cut the second paragraph," approve the revision. That's 45 seconds. The 15 minutes was a role violation, not a productivity gap.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -520,6 +569,10 @@
                 <div class="law-full" role="region">
                     <div class="law-full-inner">
                         Think of it like a house. If you rent, the landlord can raise the price, change the rules, or sell the building. If you own, you decide what happens to the walls. Every piece of your operational data — transactions, bookings, communications, tasks — has a home right now. The question is whether you own that home or you're a tenant. Tenants get evicted. Owners get options.
+                        <div class="law-example">
+                            <p class="law-example-label">In practice</p>
+                            <p>Your Claude agent reads booking data from a third-party dashboard via browser automation. The platform redesigns their UI. Your agent breaks on a Tuesday, silently, without telling you. Own the layer underneath — export to a local database, read from a file you control. An agent that reads data you own never gets evicted.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -537,6 +590,10 @@
                 <div class="law-full" role="region">
                     <div class="law-full-inner">
                         The human brain has working memory — the small scratchpad of immediately relevant information. And underneath it, long-term memory — years of accumulated context that shapes every decision. AI systems, by default, only have the scratchpad. Persistent memory gives them the long-term layer. That's the difference between a session and a relationship.
+                        <div class="law-example">
+                            <p class="law-example-label">In practice</p>
+                            <p>Every new session you re-explain: "I manage short-term rentals, my ops lead is Sese, my priorities this week are..." That's amnesia tax — paid in full at the start of every conversation. A CLAUDE.md eliminates the intro. A persistent memory layer eliminates the backstory. You start at context-loaded, not zero.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -554,6 +611,10 @@
                 <div class="law-full" role="region">
                     <div class="law-full-inner">
                         A chess player doesn't move pieces manually one by one according to instinct. They formulate a strategy and execute according to it. What changes in an agentic world is that the pieces can now suggest their own moves. Your job shifts: less execution, more adjudication. Less typing, more approving drafts that are already 90% right. The leverage isn't in doing more. It's in reviewing faster.
+                        <div class="law-example">
+                            <p class="law-example-label">In practice</p>
+                            <p>You open Claude Code and spend 40 minutes perfecting the exact tone of a landlord email. Claude's first draft was 85% right. Invisible Hand means you catch the 15% that's legally significant — not polish the rest. The 40 minutes was you operating as an assistant, not a director. The question to ask yourself: am I steering, or am I rowing?</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -573,6 +634,10 @@
                         The mistake most people make with systems is trying to fix everything at once. A full rebuild every quarter means you spend three months with a broken system, then blow it up before it can prove itself. One adjustment per week is different. It's small enough to be reversible. Frequent enough to compound. The Sunday review is 30 minutes: what worked, what didn't, what one thing changes. Not ten things. One.
                         <br><br>
                         The compounding effect of 1% weekly improvement over a year is not 52%. It's 168%. That's not motivational math. That's what actually happens when you don't skip weeks.
+                        <div class="law-example">
+                            <p class="law-example-label">In practice</p>
+                            <p>You run a weekly review and implement six CLAUDE.md changes at once. Two conflict with each other, two break existing hooks, two just don't stick. You spend Monday debugging instead of working. One change per Sunday means you always know exactly what broke if something breaks. Reversibility is the whole game.</p>
+                        </div>
                     </div>
                 </div>
             </div>
